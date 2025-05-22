@@ -1,0 +1,42 @@
+[
+  {
+    "user_query": "What is Virat Kohli's highest score?",
+    "reference_sql": "SELECT MAX(runs) FROM batting_stats WHERE player_name = 'Virat Kohli'"
+  },
+  {
+    "user_query": "Who has the best bowling economy in IPL 2023?",
+    "reference_sql": "SELECT player_name, MIN(economy_rate) FROM bowling_stats WHERE season = 2023 GROUP BY player_name ORDER BY MIN(economy_rate) ASC LIMIT 1"
+  },
+  {
+    "user_query": "Show the top 10 run-scorers in IPL history.",
+    "reference_sql": "SELECT player_name, SUM(runs) as total_runs FROM batting_stats GROUP BY player_name ORDER BY total_runs DESC LIMIT 10"
+  },
+  {
+    "user_query": "Which team won the most matches in IPL 2022?",
+    "reference_sql": "SELECT team_name, COUNT(*) as wins FROM matches WHERE winner_id = team_id AND season = 2022 GROUP BY team_name ORDER BY wins DESC LIMIT 1"
+  },
+  {
+    "user_query": "Who has the highest batting average in IPL 2023?",
+    "reference_sql": "SELECT player_name, AVG(runs) as batting_average FROM batting_stats WHERE season = 2023 GROUP BY player_name ORDER BY batting_average DESC LIMIT 1"
+  },
+  {
+    "user_query": "List the top 5 wicket-takers in IPL 2023.",
+    "reference_sql": "SELECT player_name, COUNT(wickets) as total_wickets FROM bowling_stats WHERE season = 2023 GROUP BY player_name ORDER BY total_wickets DESC LIMIT 5"
+  },
+  {
+    "user_query": "What is MS Dhoni's strike rate in IPL 2023?",
+    "reference_sql": "SELECT strike_rate FROM batting_stats WHERE player_name = 'MS Dhoni' AND season = 2023"
+  },
+  {
+    "user_query": "Show the best partnership runs in IPL history.",
+    "reference_sql": "SELECT partnership_runs, player1, player2 FROM partnerships ORDER BY partnership_runs DESC LIMIT 1"
+  },
+  {
+    "user_query": "Compare Chris Gayle and AB de Villiers' total runs in IPL.",
+    "reference_sql": "SELECT player_name, SUM(runs) as total_runs FROM batting_stats WHERE player_name IN ('Chris Gayle', 'AB de Villiers') GROUP BY player_name"
+  },
+  {
+    "user_query": "Who has the most catches in IPL 2023?",
+    "reference_sql": "SELECT player_name, COUNT(catches) as total_catches FROM fielding_stats WHERE season = 2023 GROUP BY player_name ORDER BY total_catches DESC LIMIT 1"
+  }
+]

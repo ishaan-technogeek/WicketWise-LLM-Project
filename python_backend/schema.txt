@@ -1,0 +1,261 @@
+CREATE TABLE [Ball by Ball] (
+  [Match Id] integer NOT NULL,
+  [Over_Id] integer NOT NULL,
+  [Ball Id] integer NOT NULL,
+  [Innings No] integer NOT NULL,
+  [Team Batting] integer NOT NULL,
+  [Team Bowling] integer NOT NULL,
+  Striker_Batting_Position integer NOT NULL,
+  [Striker] integer NOT NULL,
+  [Non Striker] integer NOT NULL,
+  [Bowler] integer NOT NULL,
+  PRIMARY KEY ([Match Id], [Over Id], [Ball Id], [Innings No]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Match] ([Match Id]),
+  FOREIGN KEY ([Striker]) REFERENCES [Player] ([Player_Id]),
+  FOREIGN KEY ([Non Striker]) REFERENCES [Player] ([Player Id]),
+  FOREIGN KEY ([Bowler]) REFERENCES [Player] ([Player_Id]),
+  FOREIGN KEY ([Team Batting]) REFERENCES [Team] ([Team Id]),
+  FOREIGN KEY ([Team Bowling]) REFERENCES [Team] ([Team Id ) )
+);
+
+CREATE TABLE [Batsman Scored] (
+  [Match Id] integer NOT NULL,
+  [Over Id] integer NOT NULL,
+  [Ball Id] integer NOT NULL,
+  [Runs Scored] integer NOT NULL,
+  [Innings No] integer NOT NULL,
+  PRIMARY KEY ([Match Id], [Over Id], [Ball Id], [Innings No]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball_by Ball] ([Ball_Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Innings_No]) REFERENCES [Ball by Ball] ([Ball_Id]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ( Innings _Nol),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Innings No]),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ([Innings Noj),
+  FOREIGN KEY ([Innings No ) REFERENCES [Ball_by_Ball] ([Innings Nol),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ([Ball Id ) REFERENCES [Ball by Ball] ([Match_Id]),
+  FOREIGN KEY ([Innings No]) REFERENCES [Ball by Ball] ([Match_Id]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Over Id]),
+  FOREIGN KEY ([Over Id ) REFERENCES [Ball by Ball] ([Over Id]),
+  FOREIGN KEY ([Ball Id ) REFERENCES [Ball_by_Ball] ([Over_Id]),
+  FOREIGN KEY ([Innings No ) REFERENCES [Ball by Ball] ([Over Id])
+);
+
+CREATE TABLE [Batting Style] (
+  [Batting Id] integer NOT NULL,
+  [Batting hand] varchar(200) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Batting Id])
+);
+
+CREATE TABLE [Bowling Style] (
+  [Bowling Id] integer NOT NULL,
+  [Bowling_skill] varchar(200) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Bowling Id])
+);
+
+CREATE TABLE [City] (
+  [City Id] integer NOT NULL,
+  [City Name] varchar(200) NOT NULL COLLATE NOCASE,
+  [Country_id] integer,
+  PRIMARY KEY ([City_Id]),
+  FOREIGN KEY ([Country id]) REFERENCES [Country] ([Country_Id])
+);
+
+CREATE TABLE [Country] (
+  [Country Id] integer NOT NULL,
+  [Country Name] varchar(200) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Country Id])
+);
+
+CREATE TABLE [Extra Runs] (
+  [Match Id] integer NOT NULL,
+  [Over Id] integer NOT NULL,
+  [Ball_Id] integer NOT NULL,
+  [Extra_Type_Id] integer NOT NULL,
+  [Extra Runs] integer NOT NULL,
+  [Innings No] integer NOT NULL,
+  PRIMARY KEY ([Match Id], [Over Id], [Ball Idl, [Innings No] ),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Innings Noj]) REFERENCES [Ball by Ball] ([Ball_Id]),
+  FOREIGN KEY ([Match_Id]) REFERENCES [Ball_by_Ball] ([Innings No]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Innings No] ),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ( Innings No),
+  FOREIGN KEY ([Innings No]) REFERENCES [Ball by Ball] ([Innings No]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ballj ([Match_Id]),
+  FOREIGN KEY ([Ball_Id]) REFERENCES [Ball by Ball] ([Match_Id]),
+  FOREIGN KEY ([Innings_No]) REFERENCES [Ball_by_Ball] ([Match Id]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Over Id] ),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Over_Id]),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ([Over Id]),
+  FOREIGN KEY ([Innings No] ) REFERENCES [Ball by Ball] ([Over_Id]),
+  FOREIGN KEY ([Extra_Type_Id]) REFERENCES [Extra Type] ([Extra Id]))
+);
+
+CREATE TABLE [Extra Type] (
+  [Extra Id] integer NOT NULL,
+  [Extra Name] varchar(150) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Extra Id])
+);
+
+CREATE TABLE [Match] (
+  [Match Id] integer NOT NULL,
+  [Team 1] integer NOT NULL,
+  [Team 2] integer NOT NULL,
+  [Match Date] datetime NOT NULL COLLATE NOCASE,
+  [Season Id] integer NOT NULL,
+  [Venue Id] integer NOT NULL,
+  [Toss Winner] integer NOT NULL,
+  [Toss Decide] integer NOT NULL,
+  [Win Type] integer NOT NULL,
+  [Win_Margin] integer,
+  [Outcome type] integer NOT NULL,
+  [Match Winner] integer,
+  [Man of the Match] integer,
+  PRIMARY KEY ([Match Id]),
+  FOREIGN KEY ([Outcome_type] ) REFERENCES [Outcome] ([Outcome_Id]),
+  FOREIGN KEY ([Man of the Match]) REFERENCES [Player] ([Player Id]),
+  FOREIGN KEY ([Season Id]) REFERENCES [Season] ([Season Id]),
+  FOREIGN KEY ([Team 1]) REFERENCES [Team] ([Team Id]),
+  FOREIGN KEY ([Team 2]) REFERENCES [Team] ([Team Id]),
+  FOREIGN KEY ([Toss Winner]) REFERENCES [Team] ([Team Id]),
+  FOREIGN KEY ([Match Winner]) REFERENCES [Team] ([Team Id]),
+  FOREIGN KEY ([Toss Decide]) REFERENCES [Toss Decision] ([Toss Id] ),
+  FOREIGN KEY ([Venue Id]) REFERENCES [Venue] ([Venue Id]),
+  FOREIGN KEY ([Win Type]) REFERENCES [Win By] ([Win Id])
+);
+
+CREATE TABLE [Out Type] (
+  [Out Id] integer NOT NULL,
+  [Out Name] varchar(250) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Out Id])
+);
+
+CREATE TABLE [Outcome] (
+  [Outcome Id] integer NOT NULL,
+  [Outcome Type] varchar(200) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Outcome Id])
+);
+
+CREATE TABLE [Player] (
+  [Player Id] integer NOT NULL,
+  [Player Name] varchar (400) NOT NULL COLLATE NOCASE,
+  [DOB] datetime COLLATE NOCASE,
+  [Batting_hand] integer NOT NULL,
+  [Bowling skill] integer,
+  [Country Name] integer NOT NULL,
+  PRIMARY KEY ([Player Id]),
+  FOREIGN KEY ([Batting hand]) REFERENCES [Batting Style] ([Batting Id]),
+  FOREIGN KEY ([Bowling_skill]) REFERENCES [Bowling_Style] ([Bowling Id]),
+  FOREIGN KEY ([Country Name] ) REFERENCES [Country] ([Country Id])
+);
+
+CREATE TABLE [Player Match] (
+  [Match Id] integer NOT NULL,
+  [Player Id] integer NOT NULL,
+  [Role Id] integer NOT NULL,
+  [Team Id] integer,
+  PRIMARY KEY ([Match Id], [Player Id]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Match] ([Match Id]),
+  FOREIGN KEY ([Player Id]) REFERENCES [Player] ([Player Id]),
+  FOREIGN KEY ([Role Id]) REFERENCES [Rolee] ([Role_Id]),
+  FOREIGN KEY ([Team_Id]) REFERENCES [Team] ([Team Id])
+);
+
+CREATE TABLE [Rolee] (
+  [Role Id] integer NOT NULL,
+  [Role Desc] varchar (150) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Role Id])
+);
+
+CREATE TABLE [Season] (
+  [Season Id] integer NOT NULL,
+  [Man of the_Series] integer NOT NULL,
+  [Orange Cap] integer NOT NULL,
+  [Purple Cap] integer NOT NULL,
+  [Season Year] integer,
+  PRIMARY KEY ([Season Id] ),
+  FOREIGN KEY ( Man of the Series]) REFERENCES [Player] ([Player Id]),
+  FOREIGN KEY ([Orange Cap]) REFERENCES [Player] ([Player_Id]),
+  FOREIGN KEY ([Purple_Cap]) REFERENCES [Player] ([Player_Id])
+);
+
+CREATE TABLE [Team] (
+  [Team Id] integer NOT NULL,
+  [Team Name] varchar(450) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Team Id])
+);
+
+CREATE TABLE [Toss Decision] (
+  [Toss Id] integer NOT NULL,
+  [Toss Name] varchar(50) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Toss Id])
+);
+
+CREATE TABLE [Umpire] (
+  [Umpire_Id] integer NOT NULL,
+  [Umpire_Name] varchar(350) NOT NULL COLLATE NOCASE,
+  [Umpire Country] integer NOT NULL,
+  PRIMARY KEY ([Umpire_Id]),
+  FOREIGN KEY ([Umpire_Country]) REFERENCES [Country] ([Country Id])
+);
+
+CREATE TABLE [Venue] (
+  [Venue Id] integer NOT NULL,
+  [Venue Name] varchar(450) NOT NULL COLLATE NOCASE,
+  [City Id] integer,
+  PRIMARY KEY ([Venue Id]),
+  FOREIGN KEY ([City Id]) REFERENCES [City] ([City_Id])
+);
+
+CREATE TABLE [Wicket Taken] (
+  [Match Id] integer NOT NULL,
+  [Over Id] integer NOT NULL,
+  [Ball Id] integer NOT NULL,
+  [Player Out] integer NOT NULL,
+  Kind Out] integer NOT NULL,
+  [Fielders] integer,
+  [Innings Nol] integer NOT NULL,
+  PRIMARY KEY ([Match Id], [Over Id], [Ball Id], [Innings No])
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Over Id] ) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Ball Id] ) REFERENCES [Ball by Ball] ([Ball Id]),
+  FOREIGN KEY ([Innings Nol]) REFERENCES [Ball_by_Ball) ([Ball_Id]),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball ([Innings No] ),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Innings No]),
+  FOREIGN KEY ([Ball_Id]) REFERENCES [Ball by Ball] ([Innings Nol),
+  FOREIGN KEY ([Innings No]) REFERENCES [Ball by Ball] ([Innings Nol),
+  FOREIGN KEY ([Match Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ( Ball Id]) REFERENCES [Ball by Ball] ([Match Id]),
+  FOREIGN KEY ([Innings No] ) REFERENCES [Ball by Ball ([Match Id]),
+  FOREIGN KEY ( Match Id]) REFERENCES [Ball by Ball] ([Over Id]),
+  FOREIGN KEY ([Over Id]) REFERENCES [Ball by Ball] ([Over_Id]),
+  FOREIGN KEY ([Ball Id]) REFERENCES [Ball by Ball] ([Over Id]),
+  FOREIGN KEY ([Innings No] ) REFERENCES [Ball by Ball) ([Over Id]),
+  FOREIGN KEY ([Kind Out]) REFERENCES [Out Type] ([Out Id]),
+  FOREIGN KEY ([Player Out]) REFERENCES [Player] ([Player_Id]),
+  FOREIGN KEY ([Fielders]) REFERENCES [Player] ([Player Id]))
+);
+
+CREATE TABLE [Win By] (
+  [Win Id] integer NOT NULL,
+  [Win Type] varchar (200) NOT NULL COLLATE NOCASE,
+  PRIMARY KEY ([Win Id])
+);
+
+CREATE TABLE sqlite_sequence (name, seg);
+
+CREATE TABLE [sysdiagrams] (
+  [name] nvarchar(128) NOT NULL COLLATE NOCASE,
+  [principal_id] integer NOT NULL,
+  [diagram_id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+  [version] integer,
+  [definition] blob
+);
+
+CREATE UNIQUE INDEX [sysdiagrams UK principal name] ON [sysdiagrams] ([principal id] DESC, [name] DESC);
