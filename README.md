@@ -88,12 +88,15 @@ We tested WicketWise on 51 queries of varying complexity. The evaluation used gr
 - Node.js v18 or higher
 - npm
 - langchain, GoogleGenerativeAi python framework
-- you can use:
+- For installing libraries use:
   ```bash
   pip install langchain langchain_google_genai typing fastapi pydantic sqlite3
-- to just run the backend use:
+- To just run the backend use:
   ```bash
   uvicorn main:app --reload
+- To run the complete app use:
+  ```bash
+  npm run dev
   
 ### Steps
 
