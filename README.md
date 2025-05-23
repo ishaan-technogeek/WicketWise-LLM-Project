@@ -14,7 +14,7 @@
 
 3. **Query Answering**  
    Answers direct, fact-based user queries like:  
-   *“How many runs did Virat Kohli score at Chinnaswamy Stadium?”*
+   *“How many runs did Virat Kohli score”*
 
 4. **What-if Analysis**  
    Uses trends and past performance to simulate hypothetical scenarios. Example:  
