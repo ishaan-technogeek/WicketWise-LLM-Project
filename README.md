@@ -1,4 +1,4 @@
-# WicketWise: An AI Agent for In-depth IPL Data Insights through Structured Data and Visual Reports
+# WicketWise: An AI Agent for In-depth IPL Data Insights through Structured Data
 
 **WicketWise** is an LLM-powered web application that enables users to extract deep insights from historical IPL data through natural language queries. Built with a modular agent-based architecture, the app supports structured query generation, visual summaries, and statistical reports.
 
