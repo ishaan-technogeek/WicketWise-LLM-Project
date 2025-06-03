@@ -1,4 +1,34 @@
-# WicketWise: An AI Agent for In-depth IPL Data Insights through Structured Data
+<h1 align="center">🏏  WicketWise: An AI Agent for In-depth IPL Data Insights through Structured Data</h1>
+
+<p align="center"><em>Unlock Cricket Insights with AI-Powered Analysis</em></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/last%20commit-may-555" />
+  <img src="https://img.shields.io/badge/python-57.2%25-4B8BBE" />
+  <img src="https://img.shields.io/badge/languages-4-4B8BBE" />
+</p>
+
+---
+
+<h3 align="center"><em>Built with the tools and technologies:</em></h3>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/JSON-000000?logo=json&logoColor=white" />
+  <img src="https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white" />
+  <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white" />
+<!--  <img src="https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black" /> -->
+  <img src="https://img.shields.io/badge/PostCSS-DD3A0A?logo=postcss&logoColor=white" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+ <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" />
+<!--  <img src="https://img.shields.io/badge/Zod-3E66A1?logo=Zod&logoColor=white" />
+  <img src="https://img.shields.io/badge/datefns-5C0D66?logo=calendar&logoColor=white" />
+  <img src="https://img.shields.io/badge/React%20Hook%20Form-EC5990?logo=reacthookform&logoColor=white" /> -->
+</p>
+
 
 **WicketWise** is an LLM-powered web application that enables users to extract deep insights from historical IPL data through natural language queries. Built with a modular agent-based architecture, the app supports structured query generation, visual summaries, and statistical reports.
 
